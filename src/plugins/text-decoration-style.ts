@@ -1,11 +1,33 @@
+/**
+ * This plugin will extend `text-decoration-style`
+ * providing complete options in https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style
+ *
+ * The implementation is based off of Tailwind CSS discussion
+ * https://github.com/tailwindlabs/tailwindcss/discussions/3749
+ */
+
 const plugin = require('tailwindcss/plugin');
 
-function textDecorationStyle({ addUtilities, theme, e }) {
+export interface textDecorationStyleProp {
+  addUtilities: (utility: any) => void;
+  theme: (prop: string) => any;
+  // Escape non"standard CSS string such as `1/4`
+  // Refer to https://tailwindcss.com/docs/plugins#escaping-class-names
+  e: (prop: string) => string;
+}
+
+const getProperty = (key: string) => `text-decoration-style-${key}`;
+
+function textDecorationStyle({
+  addUtilities,
+  theme,
+  e,
+}: textDecorationStyleProp) {
   const values = theme('textDecorationStyle');
 
   const utility = Object.keys(values).map(key => {
     return {
-      [`.${e(`text-decoration-style-${key}`)}`]: {
+      [`.${e(getProperty(key))}`]: {
         'text-decoration-style': values[key],
       },
     };
@@ -25,3 +47,5 @@ const textDecorationStylePlugin = plugin(textDecorationStyle, {
     },
   },
 });
+
+export default textDecorationStylePlugin;

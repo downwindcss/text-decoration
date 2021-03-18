@@ -25,6 +25,9 @@
     "version:beta": "npm version prerelease --preid=beta",
     "publish:beta": "npm publish --tag beta"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {},
   "husky": {
     "hooks": {

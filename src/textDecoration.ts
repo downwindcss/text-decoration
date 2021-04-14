@@ -1,20 +1,18 @@
 const plugin = require('tailwindcss/plugin');
 
-// const themeWalker = ({ theme, config }: { theme: Theme; config: Config }) => {
-//   console.log({ colors: theme('colors'), config });
-// };
-
-// const themePlugin = plugin(themeWalker);
-
-type BuildKey = (postFix: string) => string;
-type BuildValue = (colorValue: string) => { '--dw-td-color': string };
-
-const buildKey: BuildKey = postFix => `.td-${postFix}`;
-const buildValue: BuildValue = colorValue => ({ '--dw-td-color': colorValue });
+type Escape = (className: string) => string;
+interface PluginType {
+  // // https://github.com/tailwindlabs/tailwindcss/blob/d39ecc56f1/__tests__/util/invokePlugin.js#L11
+  // theme: (path: string, defaultValue?: string) => any;
+  addUtilities: (utilities: any[], variants?: any) => void;
+  variants: any;
+  theme: any;
+  e: Escape;
+}
 
 // Returns an array of
-const buildTextDecorationColors = (themeColors: any) => {
-  return Object.keys(themeColors).reduce((result: any, themeColorName) => {
+const buildColorRules = (themeColors: any, e: Escape) =>
+  Object.keys(themeColors).reduce((result, themeColorName) => {
     // if color is an object(containing, 50, 100, etc) then,
     //    create an array of objects
     // if color contains a string, then just add it to the result
@@ -23,20 +21,57 @@ const buildTextDecorationColors = (themeColors: any) => {
 
     if (colorContainsMultipleValues) {
       Object.keys(themeColorValue).forEach(colorValueName => {
-        const key = buildKey(`${themeColorName}-${colorValueName}`);
-        const value = buildValue(themeColorValue[colorValueName]);
+        const key = `.${e(`td-${themeColorName}-${colorValueName}`)}`;
+        const value = { '--dw-td-color': themeColorValue[colorValueName] };
         result[key] = value;
       });
     } else {
-      const key = buildKey(themeColorName);
-      const value = buildValue(themeColorValue);
+      const key = `.${e(`td-${themeColorName}`)}`;
+      const value = { '--dw-td-color': themeColorValue };
       result[key] = value;
     }
+    return result;
+  }, {} as Record<string, { '--dw-td-color': string }>);
+
+const buildThicknessRules = (
+  thicknesses: Record<string, string>,
+  e: Escape
+) => {
+  return Object.keys(thicknesses).reduce((result: any, thickness) => {
+    const suffix = thickness == 'DEFAULT' ? '' : `-${thickness}`;
+    const key = `.${e(`td-thickness${suffix}`)}`;
+
+    result[key] = { '--dw-td-thickness': thicknesses[thickness] };
     return result;
   }, {});
 };
 
-const buildTextDecorationStyles = () => ({
+const textDecorationRule = {
+  '.text-decoration': {
+    '--dw-td-overline': 'var(--tw-empty,/*!*/ /*!*/)',
+    '--dw-td-underline': 'var(--tw-empty,/*!*/ /*!*/)',
+    '--dw-td-line-through': 'var(--tw-empty,/*!*/ /*!*/)',
+    '--dw-td-color': 'currentcolor',
+    '--dw-td-style': 'initial',
+    '--dw-td-thickness': '1px',
+
+    'text-decoration-line': [
+      'var(--dw-td-overline)',
+      'var(--dw-td-underline)',
+      'var(--dw-td-line-through)',
+    ].join(' '),
+
+    'text-decoration-color': 'var(--dw-td-color)',
+    'text-decoration-style': 'var(--dw-td-style)',
+    'text-decoration-thickness': 'var(--dw-td-thickness)',
+  },
+};
+const lineRules = {
+  '.td-line-underline': { '--dw-td-underline': 'underline' },
+  '.td-line-overline': { '--dw-td-overline': 'overline' },
+  '.td-line-through': { '--dw-td-line-through': 'line-through' },
+};
+const styleRules = {
   '.td-style-solid': { '--dw-td-style': 'solid' },
   '.td-style-double': { '--dw-td-style': 'double' },
   '.td-style-dotted': { '--dw-td-style': 'dotted' },
@@ -44,65 +79,34 @@ const buildTextDecorationStyles = () => ({
   '.td-style-wavy': { '--dw-td-style': 'wavy' },
   '.td-style-initial': { '--dw-td-style': 'initial' },
   '.td-style-inherit': { '--dw-td-style': 'inherit' },
-});
+};
 
-// just copied from https://tailwindcss.com/docs/border-width
-const buildTextDecorationThickness = () => ({
-  '.td-thickness': { '--dw-td-thickness': '1px' },
-  '.td-thickness-0': { '--dw-td-thickness': '0' },
-  '.td-thickness-2': { '--dw-td-thickness': '2px' },
-  '.td-thickness-4': { '--dw-td-thickness': '4px' },
-  '.td-thickness-8': { '--dw-td-thickness': '8px' },
-});
+function textDecoration({ addUtilities, variants, theme, e }: PluginType) {
+  const themeColors = theme('textDecorationPlugin.colors');
+  const themeThicknesses = theme('textDecorationPlugin.thicknesses');
 
-interface PluginType {
-  // https://github.com/tailwindlabs/tailwindcss/blob/d39ecc56f1/__tests__/util/invokePlugin.js#L11
-  theme: (path: string, defaultValue?: string) => any;
-  addUtilities: (utilities: any[], variants?: any) => void;
-  variants: any;
-}
-
-function textDecoration({ addUtilities, variants, theme }: PluginType) {
-  const themeColors = theme('colors');
-  const textDecorationColors = buildTextDecorationColors(themeColors);
-  const textDecorationStyles = buildTextDecorationStyles();
-  const textDecorationThickness = buildTextDecorationThickness();
-
-  console.log({ textDecorationThickness });
+  const colorRules = buildColorRules(themeColors, e);
+  const thicknessRules = buildThicknessRules(themeThicknesses, e);
 
   addUtilities(
-    [
-      {
-        '.text-decoration': {
-          '--dw-td-overline': 'var(--tw-empty,/*!*/ /*!*/)',
-          '--dw-td-underline': 'var(--tw-empty,/*!*/ /*!*/)',
-          '--dw-td-line-through': 'var(--tw-empty,/*!*/ /*!*/)',
-          '--dw-td-color': 'currentcolor',
-          '--dw-td-style': 'initial',
-          '--dw-td-thickness': '1px',
-
-          'text-decoration-line': [
-            'var(--dw-td-overline)',
-            'var(--dw-td-underline)',
-            'var(--dw-td-line-through)',
-          ].join(' '),
-
-          'text-decoration-color': 'var(--dw-td-color)',
-          'text-decoration-style': 'var(--dw-td-style)',
-          'text-decoration-thickness': 'var(--dw-td-thickness)',
-        },
-      },
-      {
-        '.td-line-underline': { '--dw-td-underline': 'underline' },
-        '.td-line-overline': { '--dw-td-overline': 'overline' },
-        '.td-line-through': { '--dw-td-line-through': 'line-through' },
-      },
-      { ...textDecorationColors },
-      { ...textDecorationStyles },
-      { ...textDecorationThickness },
-    ],
-    variants('textDecoration')
+    [textDecorationRule, lineRules, styleRules, colorRules, thicknessRules],
+    variants('textDecorationPlugin')
   );
 }
 
-export default plugin(textDecoration);
+const defaultTextDecoration = {
+  theme: {
+    textDecorationPlugin: (theme: any) => ({
+      colors: theme('colors'),
+      thicknesses: {
+        DEFAULT: '1px',
+        0: '0',
+        2: '2px',
+        4: '4px',
+        8: '8px',
+      },
+    }),
+  },
+};
+
+export default plugin(textDecoration, defaultTextDecoration);

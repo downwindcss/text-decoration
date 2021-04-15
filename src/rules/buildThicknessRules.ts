@@ -1,4 +1,4 @@
-import { Escape } from '../textDecoration';
+import { Escape } from '../types';
 
 const buildThicknessRules = (
   thicknesses: Record<string, string>,

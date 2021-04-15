@@ -1,4 +1,4 @@
-import { Escape } from '../textDecoration';
+import { Escape } from '../types';
 
 // Returns an array of
 const buildColorRules = (themeColors: any, e: Escape) =>

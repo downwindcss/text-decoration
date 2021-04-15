@@ -1,19 +1,12 @@
-const plugin = require('tailwindcss/colors');
-const textDecorationRule = require('./rules/textDecorationRule');
-const lineRules = require('./rules/lineRules');
-const styleRules = require('./rules/styleRules');
-const buildColorRules = require('./rules/buildColorRules');
-const buildThicknessRules = require('./rules/buildThicknessRules');
+const plugin = require('tailwindcss/plugin');
 
-export type Escape = (className: string) => string;
-interface PluginType {
-  // // https://github.com/tailwindlabs/tailwindcss/blob/d39ecc56f1/__tests__/util/invokePlugin.js#L11
-  // theme: (path: string, defaultValue?: string) => any;
-  addUtilities: (utilities: any[], variants?: any) => void;
-  variants: any;
-  theme: any;
-  e: Escape;
-}
+import textDecorationRule from './rules/textDecorationRule';
+import lineRules from './rules/lineRules';
+import styleRules from './rules/styleRules';
+import buildColorRules from './rules/buildColorRules';
+import buildThicknessRules from './rules/buildThicknessRules';
+
+import { PluginType } from './types';
 
 function textDecoration({ addUtilities, variants, theme, e }: PluginType) {
   const themeColors = theme('textDecorationPlugin.colors');

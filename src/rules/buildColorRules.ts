@@ -1,4 +1,5 @@
 import { Escape } from '../types';
+import { internalPrefix } from '../constants';
 
 // Returns an array of
 const buildColorRules = (themeColors: any, e: Escape) =>
@@ -11,12 +12,14 @@ const buildColorRules = (themeColors: any, e: Escape) =>
 
     if (colorContainsMultipleValues) {
       Object.keys(themeColorValue).forEach(colorValueName => {
-        const key = `.${e(`td-${themeColorName}-${colorValueName}`)}`;
+        const key = `.${e(
+          `${internalPrefix}${themeColorName}-${colorValueName}`
+        )}`;
         const value = { '--dw-td-color': themeColorValue[colorValueName] };
         result[key] = value;
       });
     } else {
-      const key = `.${e(`td-${themeColorName}`)}`;
+      const key = `.${e(`${internalPrefix}${themeColorName}`)}`;
       const value = { '--dw-td-color': themeColorValue };
       result[key] = value;
     }

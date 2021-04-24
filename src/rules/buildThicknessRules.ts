@@ -1,4 +1,5 @@
 import { Escape } from '../types';
+import { internalPrefix } from '../constants';
 
 const buildThicknessRules = (
   thicknesses: Record<string, string>,
@@ -6,7 +7,7 @@ const buildThicknessRules = (
 ) => {
   return Object.keys(thicknesses).reduce((result: any, thickness) => {
     const suffix = thickness == 'DEFAULT' ? '' : `-${thickness}`;
-    const key = `.${e(`td-thickness${suffix}`)}`;
+    const key = `.${e(`${internalPrefix}thickness${suffix}`)}`;
 
     result[key] = { '--dw-td-thickness': thicknesses[thickness] };
     return result;

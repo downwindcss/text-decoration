@@ -27,15 +27,85 @@ module.exports = {
 
 ## Usage
 
+To enable `text-decoration` utilities, you need to add `.text-decoration` class.
+
+By itself it doesn't apply any style similar to how built-in [Transform](https://tailwindcss.com/docs/transform) utility doesn't apply any transformations.
+
+```html
+<h2 class="text-decoration">Header</h2>
+```
+
 ### text-decoration-line
+
+Utilities for applying lines.  
+MDN: [text-decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line)
+
+Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#no-underline) to remove text decoration.
+
+**ATTRIBUTION:** Screenshots on [text-decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line) by [Mozilla Contributrors](https://developer.mozilla.org/en-US/docs/MDN/About/contributors.txt) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/)
 
 #### underline.
 
+```html
+<p>
+  I'd far rather be
+  <span class="text-decoration text-decoration-line-underline">
+    happy than right
+  </span>
+  any day.
+</p>
+```
+
+![rendered](doc/images/underline.png)
+
 #### overline.
+
+```html
+<p>
+  I'd far rather be
+  <span class="text-decoration text-decoration-line-overline">
+    happy than right
+  </span>
+  any day.
+</p>
+```
+
+![rendered](doc/images/overline.png)
 
 #### line-through.
 
+```html
+<p>
+  I'd far rather be
+  <span class="text-decoration text-decoration-line-through">
+    happy than right
+  </span>
+  any day.
+</p>
+```
+
+![rendered](doc/images/line-through.png)
+
+**NOTE**: It's not `text-decoration-line-line-through` even though CSS applied is `text-decoration-line: line-through;`
+
 #### underline + overline + line-through
+
+```html
+<p>
+  I'd far rather be
+  <span
+    class="text-decoration 
+      text-decoration-line-overline 
+      text-decoration-line-underline 
+      text-decoration-line-through"
+  >
+    happy than right
+  </span>
+  any day.
+</p>
+```
+
+![rendered](doc/images/underline+overline+line-through.png)
 
 ### text-decoration-color
 

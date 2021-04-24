@@ -1,64 +1,68 @@
 # @downwindcss/text-decoration
 
+A [Tailwind CSS](https://tailwindcss.com/) Plugin for [text-decoration](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration) utility.
+
+This plugin is composable ([Composing the Uncompsable with CSS Variables](https://adamwathan.me/composing-the-uncomposable-with-css-variables/)) thus can add multiple [text-decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line) utitlies (to add under/overline and line-through together. Refer to the "Usage" sectrion below)
+
+## Installation
+
+```bash
+npm install @downwindcss/text-decoration
+# for Yarn users
+yarn add @downwindcss/text-decoration
+```
+
+## Configuration
+
+Add the plugin in `tailwind.config.js` in [Plugins section](https://tailwindcss.com/docs/configuration#plugins).
+
+```js
+// tailwind.config.js
+module.exports = {
+  plugins: [require('@downwindcss/text-decoration')],
+};
+```
+
+## Utilities
+
+## Usage
+
+### text-decoration-line
+
+#### underline.
+
+#### overline.
+
+#### line-through.
+
+#### underline + overline + line-through
+
+### text-decoration-color
+
+All Tailwind CSS colors and custom colors are available.
+
+// Show tw color usage  
+// add a custom color and show the usage
+
+### text-decoration-style
+
+### text-decoration-thickness
+
+### Duplicate Utilities
+
+Following `text-decoration` can be done with native [Tailwind CSS utilities](https://tailwindcss.com/docs/text-decoration) but also added in this plugin to enable composability.
+
+1. underline: `text-decoration: underline;`
+2. line-through: `text-decoration: line-through;`
+3. no-underline: `text-decoration: none;`
+
+## Resource
+
+- Source: [downwindcss/text-decoration](https://github.com/downwindcss/text-decoration)
+- NPM: https://www.npmjs.com/package/@downwindcss/text-decoration
+
+## Context
+
 Based on idea post in Tailwind CSS dicussion, https://github.com/tailwindlabs/tailwindcss/discussions/3749
 
 This plugin provides missing Tailwind CSS `text-decoration*` properties as a plugin.
-
-## text-decoration-style
-
-MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style
-
-TW playground demo - https://play.tailwindcss.com/Wjwo66GH3G?file=config
-
-1. text-decoration-style-solid: `text-decoration-style: solid;`
-1. text-decoration-style-double: `text-decoration-style: double;`
-1. text-decoration-style-dotted: `text-decoration-style: dotted;`
-1. text-decoration-style-dashed: `text-decoration-style: dashed;`
-1. text-decoration-style-wavy: `text-decoration-style: wavy;`
-
-## text-decoration-color
-
-MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color
-
-`text-decoration-color` will use all avaialble Tailwind CSS colors.  
-Possibly a huge CSS but with TW/jit, it can work better.
-
-## Missing text-decoration-line
-
-TW provides following three `text-decoration` options.  
-https://tailwindcss.com/docs/text-decoration
-
-| Class        | Properties                    |
-| ------------ | ----------------------------- |
-| underline    | text-decoration: underline    |
-| line-through | text-decoration: line-through |
-| no-underline | text-decoration: none         |
-
-And `@downwindcss/text-decoration` provides additional options.
-
-| Class                              | Properties                          |
-| ---------------------------------- | ----------------------------------- |
-| text-decoration-line-overline      | text-decoration: overline           |
-| text-decoration-line-blink         | text-decoration: blink              |
-| text-decoration-line-underoverline | text-decoration: underline overline |
-| text-decoration-line-              | text-decoration: unset              |
-
-You can do all combinations of `[ underline || overline || line-through || blink ]` in the [documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line#formal_syntax), but decided not to as the usage would be low and not to pollute the class names (not to mention blowing up the CSS size).
-
-## text-decoration-thickness
-
-Default options provide `text-decoration-thickness-[n]` where `n` is from 1~5px.  
-This can be overriden via TW configuration file as show below.
-
-```js
-module.exports = {
-  theme: {
-    extend: {
-      textDecorationThickness: {
-        '1rem': '1rem',
-        primary: '2px',
-      },
-    },
-  },
-};
-```

@@ -1,5 +1,3 @@
-const plugin = require('tailwindcss/plugin');
-
 import textDecorationRule from './rules/textDecorationRule';
 import lineRules from './rules/lineRules';
 import styleRules from './rules/styleRules';
@@ -7,6 +5,8 @@ import buildColorRules from './rules/buildColorRules';
 import buildThicknessRules from './rules/buildThicknessRules';
 
 import { PluginType } from './types';
+
+const plugin = require('tailwindcss/plugin');
 
 function textDecoration({ addUtilities, variants, theme, e }: PluginType) {
   const themeColors = theme('textDecorationPlugin.colors');

@@ -56,7 +56,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 </p>
 ```
 
-![rendered](doc/images/underline.png)
+![rendered](./doc/images/underline.png)
 
 #### overline.
 
@@ -70,7 +70,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 </p>
 ```
 
-![rendered](doc/images/overline.png)
+![rendered](./doc/images/overline.png)
 
 #### line-through.
 
@@ -84,7 +84,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 </p>
 ```
 
-![rendered](doc/images/line-through.png)
+![rendered](./doc/images/line-through.png)
 
 **NOTE**: It's not `text-decoration-line-line-through` even though CSS applied is `text-decoration-line: line-through;`
 
@@ -105,7 +105,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 </p>
 ```
 
-![rendered](doc/images/underline+overline+line-through.png)
+![rendered](./doc/images/underline+overline+line-through.png)
 
 ### text-decoration-color
 

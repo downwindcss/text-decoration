@@ -1,1 +1,1 @@
-export const internalPrefix = 'text-decoration-';
+export const internalPrefix = 'decoration-';

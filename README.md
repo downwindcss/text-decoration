@@ -136,3 +136,7 @@ Following `text-decoration` can be done with native [Tailwind CSS utilities](htt
 Based on idea post in Tailwind CSS dicussion, https://github.com/tailwindlabs/tailwindcss/discussions/3749
 
 This plugin provides missing Tailwind CSS `text-decoration*` properties as a plugin.
+
+## Build
+
+This project uses [PNPM](https://pnpm.io/)

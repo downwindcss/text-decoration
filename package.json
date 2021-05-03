@@ -20,10 +20,10 @@
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "version:alpha": "npm version prerelease --preid=alpha",
-    "publish:alpha": "npm publish --tag alpha",
-    "version:beta": "npm version prerelease --preid=beta",
-    "publish:beta": "npm publish --tag beta"
+    "version:alpha": "pnpm version prerelease --preid=alpha",
+    "publish:alpha": "pnpm publish --tag alpha",
+    "version:beta": "pnpm version prerelease --preid=beta",
+    "publish:beta": "pnpm publish --tag beta"
   },
   "publishConfig": {
     "access": "public"

@@ -28,7 +28,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"

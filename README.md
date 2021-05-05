@@ -95,9 +95,9 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
   I'd far rather be
   <span
     class="text-decoration 
-      text-decoration-line-overline 
-      text-decoration-line-underline 
-      text-decoration-line-through"
+      decoration-line-overline 
+      decoration-line-underline 
+      decoration-line-through"
   >
     happy than right
   </span>
@@ -107,16 +107,16 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 
 ![rendered](.images/underline+overline+line-through.png)
 
-### text-decoration-color
+### decoration-color
 
 All Tailwind CSS colors and custom colors are available.
 
 // Show tw color usage  
 // add a custom color and show the usage
 
-### text-decoration-style
+### decoration-style
 
-### text-decoration-thickness
+### tdecoration-thickness
 
 ### Duplicate Utilities
 

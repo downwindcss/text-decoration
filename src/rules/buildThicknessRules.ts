@@ -6,9 +6,7 @@ const buildThicknessRules = (
   e: Escape
 ) => {
   return Object.keys(thicknesses).reduce((result: any, thickness) => {
-    const suffix = thickness === 'DEFAULT' ? '' : `-${thickness}`;
-    const key = `.${e(`${internalPrefix}${suffix}`)}`;
-
+    const key = `.${e(`${internalPrefix}${thickness}`)}`;
     result[key] = { '--dw-td-thickness': thicknesses[thickness] };
     return result;
   }, {});

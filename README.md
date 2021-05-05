@@ -107,16 +107,87 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 
 ![rendered](.images/underline+overline+line-through.png)
 
-### decoration-color
+### text-decoration-color
 
-All Tailwind CSS colors and custom colors are available.
+All Tailwind CSS colors AND your extended colors are available.
 
-// Show tw color usage  
-// add a custom color and show the usage
+You can extend decoration colors and by extending `textDecorationPlugin.colors`.
 
-### decoration-style
+Extend colors in <code>tailwind.config.js</code>
 
-### tdecoration-thickness
+```js
+const colors = require('tailwindcss/colors')
+
+module.exports = {
+  theme: {
+    extend: {
+      textDecorationPlugin: {
+        colors: {
+          primary: 'tomato',
+          secondary: 'gold',
+        },
+      },    },
+  },
+  variants: {},
+  plugins: [textDecorationPlugin],
+}
+```
+
+And use them in your HTML markup.
+
+```html
+<h1 class="text-decoration 
+    decoration-underline decoration-overline decoration-line-through 
+    decoration-wavy
+    decoration-primary
+    decoration-2">
+    Header
+</h1>
+```
+
+If you extend `colors`, extended colors will be available for the plugin.
+
+```js
+const colors = require('tailwindcss/colors')
+
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        'light-blue': colors.lightBlue,
+      },
+      textDecorationPlugin: {
+        colors: {
+          primary: 'tomato',
+        },
+      },
+    },
+  },
+  variants: {},
+  plugins: [textDecorationPlugin],
+}
+```
+
+And use them in your HTML markup.
+
+```html
+<h1 class="text-decoration 
+    decoration-underline decoration-overline decoration-line-through 
+    decoration-wavy
+    decoration-light-blue-300
+    decoration-2">
+    Header
+</h1>
+```
+
+
+### text-decoration-style
+
+### text-decoration-thickness
+
+### Clearing Deocration
+
+Use `decoration-none`.
 
 ### Duplicate Utilities
 

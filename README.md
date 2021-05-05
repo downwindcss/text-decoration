@@ -2,7 +2,7 @@
 
 A [Tailwind CSS](https://tailwindcss.com/) Plugin for [text-decoration](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration) utility.
 
-This plugin is composable ([Composing the Uncompsable with CSS Variables](https://adamwathan.me/composing-the-uncomposable-with-css-variables/)) thus can add multiple [text-decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line) utitlies (to add under/overline and line-through together. Refer to the "Usage" sectrion below)
+This plugin is composable ([Composing the Uncompsable with CSS Variables](https://adamwathan.me/composing-the-uncomposable-with-css-variables/)) thus can add multiple [decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/decoration-line) utitlies (to add under/overline and line-through together. Refer to the "Usage" sectrion below)
 
 ## Installation
 
@@ -35,21 +35,21 @@ By itself it doesn't apply any style similar to how built-in [Transform](https:/
 <h2 class="text-decoration">Header</h2>
 ```
 
-### text-decoration-line
+### decoration-line
 
 Utilities for applying lines.  
-MDN: [text-decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line)
+MDN: [decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/decoration-line)
 
 Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#no-underline) to remove text decoration.
 
-**ATTRIBUTION:** Screenshots on [text-decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line) by [Mozilla Contributrors](https://developer.mozilla.org/en-US/docs/MDN/About/contributors.txt) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/)
+**ATTRIBUTION:** Screenshots on [decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/decoration-line) by [Mozilla Contributrors](https://developer.mozilla.org/en-US/docs/MDN/About/contributors.txt) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/)
 
 #### underline.
 
 ```html
 <p>
   I'd far rather be
-  <span class="text-decoration text-decoration-line-underline">
+  <span class="text-decoration decoration-line-underline">
     happy than right
   </span>
   any day.
@@ -63,7 +63,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 ```html
 <p>
   I'd far rather be
-  <span class="text-decoration text-decoration-line-overline">
+  <span class="text-decoration decoration-line-overline">
     happy than right
   </span>
   any day.
@@ -77,7 +77,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 ```html
 <p>
   I'd far rather be
-  <span class="text-decoration text-decoration-line-through">
+  <span class="text-decoration decoration-line-through">
     happy than right
   </span>
   any day.
@@ -86,7 +86,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 
 ![rendered](.images/line-through.png)
 
-**NOTE**: It's not `text-decoration-line-line-through` even though CSS applied is `text-decoration-line: line-through;`
+**NOTE**: It's not `decoration-line-line-through` even though CSS applied is `decoration-line: line-through;`
 
 #### underline + overline + line-through
 
@@ -95,8 +95,8 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
   I'd far rather be
   <span
     class="text-decoration 
-      decoration-line-overline 
-      decoration-line-underline 
+      decoration-overline 
+      decoration-underline 
       decoration-line-through"
   >
     happy than right

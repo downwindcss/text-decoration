@@ -26,7 +26,6 @@ const defaultTextDecoration = {
     textDecorationPlugin: (theme: any) => ({
       colors: theme('colors'),
       thicknesses: {
-        0: '0',
         1: '1px',
         2: '2px',
         4: '4px',

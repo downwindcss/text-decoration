@@ -3,6 +3,7 @@ const textDecorationRule = {
     '--dw-td-overline': 'var(--tw-empty,/*!*/ /*!*/)',
     '--dw-td-underline': 'var(--tw-empty,/*!*/ /*!*/)',
     '--dw-td-line-through': 'var(--tw-empty,/*!*/ /*!*/)',
+    '--dw-td-none': 'var(--tw-empty,/*!*/ /*!*/)',
 
     // Default values from MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration#formal_definition
     '--dw-td-color': 'currentcolor',
@@ -13,6 +14,7 @@ const textDecorationRule = {
       'var(--dw-td-overline)',
       'var(--dw-td-underline)',
       'var(--dw-td-line-through)',
+      'var(--dw-td-none)'
     ].join(' '),
 
     'text-decoration-color': 'var(--dw-td-color)',

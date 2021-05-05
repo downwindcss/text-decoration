@@ -6,6 +6,7 @@ const lineRules = {
   [`.${internalPrefix}line-through`]: {
     '--dw-td-line-through': 'line-through',
   },
+  [`.${internalPrefix}none`]: { '--dw-td-none': 'none' },
 };
 
 export default lineRules;

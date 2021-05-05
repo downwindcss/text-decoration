@@ -183,7 +183,64 @@ And use them in your HTML markup.
 
 ### text-decoration-style
 
+You can use following [text-decoration-style](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style)s.
+
+
+| CSS               | Applied Style           |
+|-------------------|-------------------------|
+| decoration-solid  | text-decoration: solid  |
+| decoration-double | text-decoration: double |
+| decoration-dotted | text-decoration: dotted |
+| decoration-dashed | text-decoration: dashed |
+| decoration-wavy   | text-decoration: wavy   |
+
+
 ### text-decoration-thickness
+
+When you type `decoration-{thickness: number}`, [text-decoration-thickness](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness) will be applied.
+
+As an example, `decoration-2` will apply `2px` thickness
+
+```html
+<h1 class="text-decoration 
+    decoration-underline decoration-overline decoration-line-through 
+    decoration-wavy
+    decoration-primary
+    decoration-2">
+    Header
+</h1>
+```
+
+Available values are,
+
+
+| CSS          | Applied Style                   |
+|--------------|---------------------------------|
+| decoration-1 | text-decoration-thickness: 1px; |
+| decoration-2 | text-decoration-thickness: 2px; |
+| decoration-4 | text-decoration-thickness: 4px; |
+| decoration-8 | text-decoration-thickness: 8px; |
+
+You can extend the thickness by updating configuration, `textDecorationPlugin.thicknesses` property.
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      textDecorationPlugin: {
+        thicknesses: {
+          '0.2rem': '0.2rem',
+        },
+      },
+    },
+  },
+  variants: {},
+  plugins: [textDecorationPlugin],
+}
+```
+
+And use it as `decoration-0.2rem`.
+
 
 ### Clearing Deocration
 

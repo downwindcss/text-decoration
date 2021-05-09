@@ -464,7 +464,6 @@ test('"tw.colors" are available', async () => {
   let extendedRules = utilities.root.nodes
     .filter(((r: any) => r.selector === ".decoration-primary" || r.selector === ".decoration-secondary"))
     .map((n: any) => ({ selector: n.selector, property: n.nodes[0].prop, value: n.nodes[0].value }))
-  // console.log(JSON.stringify(extendedRules, null, 2))
 
   expect(extendedRules).toMatchObject([
     {
@@ -493,7 +492,6 @@ test('"textDecorationPlugin.colors" are available', async () => {
   let extendedRules = utilities.root.nodes
     .filter(((r: any) => r.selector === ".decoration-primary" || r.selector === ".decoration-secondary"))
     .map((n: any) => ({ selector: n.selector, property: n.nodes[0].prop, value: n.nodes[0].value }))
-  // console.log(JSON.stringify(extendedRules, null, 2))
 
   expect(extendedRules).toMatchObject([
     {

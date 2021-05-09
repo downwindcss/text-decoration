@@ -16,24 +16,24 @@ declare global {
   }
 }
 
-
-const defautlConfig = ({
+const defaultConfig = ({
   plugins: [textDecorationPlugin],
   // disalble core plugins: https://tailwindcss.com/docs/configuration#core-plugins
   corePlugins: [],
 } as unknown) as TailwindConfig;
 
-function generateTailwindCss(config = defautlConfig) {
-  return postcss([
-    tailwindcss(config),
-  ]).process('@tailwind utilities', { from: undefined });
+function generateTailwindCss(customConfig?: TailwindConfig) {
+  const config = Object.assign(defaultConfig, customConfig);
+
+  return postcss([tailwindcss(config)]).process('@tailwind utilities', {
+    from: undefined,
+  });
 }
 
 /**
  * Happy Path test
  */
 test('all Tailwind CSS colors are used', async () => {
-
   const utilities = await generateTailwindCss();
 
   expect(utilities.css).toMatchInlineSnapshot(`
@@ -449,5 +449,35 @@ test('all Tailwind CSS colors are used', async () => {
   `);
 });
 
-xtest('"textDecorationPlugin.colors" are available', () => { });
-xtest('"tw.colors" are available', () => { });
+test('"textDecorationPlugin.colors" are available', async () => {
+  const utilities = await generateTailwindCss({
+    theme: {
+      extend: {
+        colors: {
+          primary: 'tomato',
+          secondary: 'gold',
+        },
+      },
+    },
+  } as any);
+
+  let extendedRules = utilities.root.nodes
+    .filter(((r: any) => r.selector === ".decoration-primary" || r.selector === ".decoration-secondary"))
+    .map((n: any) => ({ selector: n.selector, property: n.nodes[0].prop, value: n.nodes[0].value }))
+  // console.log(JSON.stringify(extendedRules, null, 2))
+
+  expect(extendedRules).toMatchObject([
+    {
+      "selector": ".decoration-primary",
+      "property": "--dw-td-color",
+      "value": "tomato"
+    },
+    {
+      "selector": ".decoration-secondary",
+      "property": "--dw-td-color",
+      "value": "gold"
+    }
+  ])
+});
+
+// xtest('"tw.colors" are available', () => { });

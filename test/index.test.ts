@@ -449,7 +449,7 @@ test('all Tailwind CSS colors are used', async () => {
   `);
 });
 
-test('"textDecorationPlugin.colors" are available', async () => {
+test('"tw.colors" are available', async () => {
   const utilities = await generateTailwindCss({
     theme: {
       extend: {
@@ -480,4 +480,31 @@ test('"textDecorationPlugin.colors" are available', async () => {
   ])
 });
 
-// xtest('"tw.colors" are available', () => { });
+test('"textDecorationPlugin.colors" are available', async () => {
+  const utilities = await generateTailwindCss({
+    textDecorationPlugin: {
+      colors: {
+        primary: 'tomato',
+        secondary: 'gold',
+      },
+    },
+  } as any);
+
+  let extendedRules = utilities.root.nodes
+    .filter(((r: any) => r.selector === ".decoration-primary" || r.selector === ".decoration-secondary"))
+    .map((n: any) => ({ selector: n.selector, property: n.nodes[0].prop, value: n.nodes[0].value }))
+  // console.log(JSON.stringify(extendedRules, null, 2))
+
+  expect(extendedRules).toMatchObject([
+    {
+      "selector": ".decoration-primary",
+      "property": "--dw-td-color",
+      "value": "tomato"
+    },
+    {
+      "selector": ".decoration-secondary",
+      "property": "--dw-td-color",
+      "value": "gold"
+    }
+  ])
+});

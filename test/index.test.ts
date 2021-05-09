@@ -15,19 +15,26 @@ declare global {
     }
   }
 }
+
+
+const defautlConfig = ({
+  plugins: [textDecorationPlugin],
+  // disalble core plugins: https://tailwindcss.com/docs/configuration#core-plugins
+  corePlugins: [],
+} as unknown) as TailwindConfig;
+
+function generateTailwindCss(config = defautlConfig) {
+  return postcss([
+    tailwindcss(config),
+  ]).process('@tailwind utilities', { from: undefined });
+}
+
 /**
  * Happy Path test
  */
 test('all Tailwind CSS colors are used', async () => {
-  const config = ({
-    plugins: [textDecorationPlugin],
-    // disalble core plugins: https://tailwindcss.com/docs/configuration#core-plugins
-    corePlugins: [],
-  } as unknown) as TailwindConfig;
 
-  const utilities = await postcss([
-    tailwindcss(config),
-  ]).process('@tailwind utilities', { from: undefined });
+  const utilities = await generateTailwindCss();
 
   expect(utilities.css).toMatchInlineSnapshot(`
     ".text-decoration {

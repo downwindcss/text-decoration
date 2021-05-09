@@ -25,7 +25,7 @@ module.exports = {
 
 ## Utilities
 
-## Usage
+### Usage
 
 To enable `text-decoration` utilities, you need to add `.text-decoration` class.
 

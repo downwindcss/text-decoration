@@ -449,6 +449,45 @@ test('all Tailwind CSS colors are used', async () => {
   `);
 });
 
+test('Custom thicknesses', async () => {
+  const utilities = await generateTailwindCss({
+    theme: {
+      extend: {
+        textDecorationPlugin: {
+          thicknesses: {
+            "0.2rem": "0.2rem",
+            "header": "0.3rem",
+            "paragraph": "3px",
+          }
+        }
+      }
+    },
+  } as any);
+
+  const extendedSelectors = ['.decoration-0\\.2rem', '.decoration-header', '.decoration-paragraph']
+
+  const extendedRules = utilities.root.nodes.filter((r: any) => extendedSelectors.includes(r.selector))
+    .map((n: any) => ({ selector: n.selector, property: n.nodes[0].prop, value: n.nodes[0].value }))
+
+  expect(extendedRules).toMatchObject([
+    {
+      "selector": ".decoration-0\\.2rem",
+      "property": "--dw-td-thickness",
+      "value": "0.2rem"
+    },
+    {
+      "selector": ".decoration-header",
+      "property": "--dw-td-thickness",
+      "value": "0.3rem"
+    },
+    {
+      "selector": ".decoration-paragraph",
+      "property": "--dw-td-thickness",
+      "value": "3px"
+    }
+  ])
+})
+
 test('"tw.colors" are available', async () => {
   const utilities = await generateTailwindCss({
     theme: {

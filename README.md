@@ -49,7 +49,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 ```html
 <p>
   I'd far rather be
-  <span class="text-decoration decoration-line-underline">
+  <span class="text-decoration decoration-underline">
     happy than right
   </span>
   any day.
@@ -63,7 +63,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 ```html
 <p>
   I'd far rather be
-  <span class="text-decoration decoration-line-overline">
+  <span class="text-decoration decoration-overline">
     happy than right
   </span>
   any day.
@@ -77,7 +77,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 ```html
 <p>
   I'd far rather be
-  <span class="text-decoration decoration-line-through">
+  <span class="text-decoration decoration-through">
     happy than right
   </span>
   any day.

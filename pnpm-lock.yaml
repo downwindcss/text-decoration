@@ -4,6 +4,7 @@ specifiers:
   '@size-limit/preset-small-lib': ^4.10.1
   '@types/tailwindcss': ^2.0.2
   husky: ^5.1.3
+  jest-matcher-css: ^1.1.0
   postcss: ^8.2.14
   size-limit: ^4.10.1
   tailwindcss: ^2.1.2
@@ -15,6 +16,7 @@ devDependencies:
   '@size-limit/preset-small-lib': 4.10.2_c9842e0d0f204da45023774cd4f17286
   '@types/tailwindcss': 2.0.2
   husky: 5.2.0
+  jest-matcher-css: 1.1.0
   postcss: 8.2.14
   size-limit: 4.10.2
   tailwindcss: 2.1.2_postcss@8.2.14
@@ -5200,6 +5202,10 @@ packages:
     dependencies:
       jest-get-type: 25.2.6
       pretty-format: 25.5.0
+    dev: true
+
+  /jest-matcher-css/1.1.0:
+    resolution: {integrity: sha512-HycxxNw36Cx/CD/XjIt4qcJ0SDpEH9F2ZWTndoyfK7nLiZnIJp/sGSdpQC4GoaC/XshKEee7nBJ81FhIScc5vA==}
     dev: true
 
   /jest-matcher-utils/25.5.0:

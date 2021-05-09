@@ -455,38 +455,47 @@ test('Custom thicknesses', async () => {
       extend: {
         textDecorationPlugin: {
           thicknesses: {
-            "0.2rem": "0.2rem",
-            "header": "0.3rem",
-            "paragraph": "3px",
-          }
-        }
-      }
+            '0.2rem': '0.2rem',
+            header: '0.3rem',
+            paragraph: '3px',
+          },
+        },
+      },
     },
   } as any);
 
-  const extendedSelectors = ['.decoration-0\\.2rem', '.decoration-header', '.decoration-paragraph']
+  const extendedSelectors = [
+    '.decoration-0\\.2rem',
+    '.decoration-header',
+    '.decoration-paragraph',
+  ];
 
-  const extendedRules = utilities.root.nodes.filter((r: any) => extendedSelectors.includes(r.selector))
-    .map((n: any) => ({ selector: n.selector, property: n.nodes[0].prop, value: n.nodes[0].value }))
+  const extendedRules = utilities.root.nodes
+    .filter((r: any) => extendedSelectors.includes(r.selector))
+    .map((n: any) => ({
+      selector: n.selector,
+      property: n.nodes[0].prop,
+      value: n.nodes[0].value,
+    }));
 
   expect(extendedRules).toMatchObject([
     {
-      "selector": ".decoration-0\\.2rem",
-      "property": "--dw-td-thickness",
-      "value": "0.2rem"
+      selector: '.decoration-0\\.2rem',
+      property: '--dw-td-thickness',
+      value: '0.2rem',
     },
     {
-      "selector": ".decoration-header",
-      "property": "--dw-td-thickness",
-      "value": "0.3rem"
+      selector: '.decoration-header',
+      property: '--dw-td-thickness',
+      value: '0.3rem',
     },
     {
-      "selector": ".decoration-paragraph",
-      "property": "--dw-td-thickness",
-      "value": "3px"
-    }
-  ])
-})
+      selector: '.decoration-paragraph',
+      property: '--dw-td-thickness',
+      value: '3px',
+    },
+  ]);
+});
 
 test('"tw.colors" are available', async () => {
   const utilities = await generateTailwindCss({
@@ -501,21 +510,29 @@ test('"tw.colors" are available', async () => {
   } as any);
 
   let extendedRules = utilities.root.nodes
-    .filter(((r: any) => r.selector === ".decoration-primary" || r.selector === ".decoration-secondary"))
-    .map((n: any) => ({ selector: n.selector, property: n.nodes[0].prop, value: n.nodes[0].value }))
+    .filter(
+      (r: any) =>
+        r.selector === '.decoration-primary' ||
+        r.selector === '.decoration-secondary'
+    )
+    .map((n: any) => ({
+      selector: n.selector,
+      property: n.nodes[0].prop,
+      value: n.nodes[0].value,
+    }));
 
   expect(extendedRules).toMatchObject([
     {
-      "selector": ".decoration-primary",
-      "property": "--dw-td-color",
-      "value": "tomato"
+      selector: '.decoration-primary',
+      property: '--dw-td-color',
+      value: 'tomato',
     },
     {
-      "selector": ".decoration-secondary",
-      "property": "--dw-td-color",
-      "value": "gold"
-    }
-  ])
+      selector: '.decoration-secondary',
+      property: '--dw-td-color',
+      value: 'gold',
+    },
+  ]);
 });
 
 test('"textDecorationPlugin.colors" are available', async () => {
@@ -529,19 +546,27 @@ test('"textDecorationPlugin.colors" are available', async () => {
   } as any);
 
   let extendedRules = utilities.root.nodes
-    .filter(((r: any) => r.selector === ".decoration-primary" || r.selector === ".decoration-secondary"))
-    .map((n: any) => ({ selector: n.selector, property: n.nodes[0].prop, value: n.nodes[0].value }))
+    .filter(
+      (r: any) =>
+        r.selector === '.decoration-primary' ||
+        r.selector === '.decoration-secondary'
+    )
+    .map((n: any) => ({
+      selector: n.selector,
+      property: n.nodes[0].prop,
+      value: n.nodes[0].value,
+    }));
 
   expect(extendedRules).toMatchObject([
     {
-      "selector": ".decoration-primary",
-      "property": "--dw-td-color",
-      "value": "tomato"
+      selector: '.decoration-primary',
+      property: '--dw-td-color',
+      value: 'tomato',
     },
     {
-      "selector": ".decoration-secondary",
-      "property": "--dw-td-color",
-      "value": "gold"
-    }
-  ])
+      selector: '.decoration-secondary',
+      property: '--dw-td-color',
+      value: 'gold',
+    },
+  ]);
 });

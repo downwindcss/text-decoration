@@ -7,4 +7,3 @@ interface PluginType {
   theme: any;
   e: Escape;
 }
-

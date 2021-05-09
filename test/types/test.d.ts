@@ -1,1 +1,1 @@
-declare module 'jest-matcher-css'
+declare module 'jest-matcher-css';

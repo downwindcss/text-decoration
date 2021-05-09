@@ -5,6 +5,10 @@
   "author": "Sung M. Kim",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/downwindcss/text-decoration.git"
+  },
   "files": [
     "dist",
     "src",

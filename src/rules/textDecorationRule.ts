@@ -14,7 +14,7 @@ const textDecorationRule = {
       'var(--dw-td-overline)',
       'var(--dw-td-underline)',
       'var(--dw-td-line-through)',
-      'var(--dw-td-none)'
+      'var(--dw-td-none)',
     ].join(' '),
 
     'text-decoration-color': 'var(--dw-td-color)',

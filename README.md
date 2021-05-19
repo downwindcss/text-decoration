@@ -23,6 +23,30 @@ module.exports = {
 };
 ```
 
+## TL;DR
+
+**Example**: https://play.tailwindcss.com/fm4Vucj6IG
+
+Here are all the available utilities
+
+| Utility Name                 | CSS Definition                                    |
+|------------------------------|---------------------------------------------------|
+| text-decoration              | N/A: Needed to apply text decoration              |
+| text-decoration-underline    | text-decoration-line: underline                   |
+| text-decoration-overline     | text-decoration-line: overline                    |
+| text-decoration-line-through | text-decoration-line: line-through                |
+| text-decoration-solid        | text-decoration-style: solid                      |
+| text-decoration-double       | text-decoration-style: double                     |
+| text-decoration-dotted       | text-decoration-style: dotted                     |
+| text-decoration-dashed       | text-decoration-style: dashed                     |
+| text-decoration-wavy         | text-decoration-style: wavy                       |
+| text-decoration-1            | text-decoration-thickness: 1px;                   |
+| text-decoration-2            | text-decoration-thickness: 2px;                   |
+| text-decoration-4            | text-decoration-thickness: 4px;                   |
+| text-decoration-8            | text-decoration-thickness: 8px;                   |
+| text-decoration-$color       | `$color`: All Tailwind CSS and your custom colors |
+
+
 ## Utilities
 
 ### Usage
@@ -193,13 +217,13 @@ And use them in your HTML markup.
 You can use following [text-decoration-style](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style)s.
 
 
-| CSS               | Applied Style           |
-|-------------------|-------------------------|
-| text-decoration-solid  | text-decoration: solid  |
-| text-decoration-double | text-decoration: double |
-| text-decoration-dotted | text-decoration: dotted |
-| text-decoration-dashed | text-decoration: dashed |
-| text-decoration-wavy   | text-decoration: wavy   |
+| CSS                    | Applied Style                 |
+|------------------------|-------------------------------|
+| text-decoration-solid  | text-decoration-style: solid  |
+| text-decoration-double | text-decoration-style: double |
+| text-decoration-dotted | text-decoration-style: dotted |
+| text-decoration-dashed | text-decoration-style: dashed |
+| text-decoration-wavy   | text-decoration-style: wavy   |
 
 
 ### text-decoration-thickness
@@ -224,8 +248,8 @@ As an example, `decoration-2` will apply `2px` thickness
 Available values are,
 
 
-| CSS          | Applied Style                   |
-|--------------|---------------------------------|
+| CSS               | Applied Style                   |
+|-------------------|---------------------------------|
 | text-decoration-1 | text-decoration-thickness: 1px; |
 | text-decoration-2 | text-decoration-thickness: 2px; |
 | text-decoration-4 | text-decoration-thickness: 4px; |

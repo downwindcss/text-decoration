@@ -35,7 +35,7 @@ By itself it doesn't apply any style similar to how built-in [Transform](https:/
 <h2 class="text-decoration">Header</h2>
 ```
 
-### decoration-line
+### text-decoration-line
 
 Utilities for applying lines.  
 MDN: [decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/decoration-line)
@@ -49,7 +49,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 ```html
 <p>
   I'd far rather be
-  <span class="text-decoration decoration-underline">
+  <span class="text-decoration text-decoration-underline">
     happy than right
   </span>
   any day.
@@ -63,7 +63,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 ```html
 <p>
   I'd far rather be
-  <span class="text-decoration decoration-overline">
+  <span class="text-decoration text-decoration-overline">
     happy than right
   </span>
   any day.
@@ -77,7 +77,7 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 ```html
 <p>
   I'd far rather be
-  <span class="text-decoration decoration-through">
+  <span class="text-decoration text-decoration-through">
     happy than right
   </span>
   any day.
@@ -94,10 +94,11 @@ Use Tailwind CSS's [no-underline](https://tailwindcss.com/docs/text-decoration#n
 <p>
   I'd far rather be
   <span
-    class="text-decoration 
-      decoration-overline 
-      decoration-underline 
-      decoration-line-through"
+    class="
+        text-decoration 
+        text-decoration-overline 
+        text-decoration-underline 
+        text-decoration-line-through"
   >
     happy than right
   </span>
@@ -136,11 +137,14 @@ module.exports = {
 And use them in your HTML markup.
 
 ```html
-<h1 class="text-decoration 
-    decoration-underline decoration-overline decoration-line-through 
-    decoration-wavy
-    decoration-primary
-    decoration-2">
+<h1 class="
+    text-decoration 
+    text-decoration-underline 
+    text-decoration-overline 
+    text-decoration-line-through 
+    text-decoration-wavy
+    text-decoration-primary
+    text-decoration-2">
     Header
 </h1>
 ```
@@ -171,11 +175,14 @@ module.exports = {
 And use them in your HTML markup.
 
 ```html
-<h1 class="text-decoration 
-    decoration-underline decoration-overline decoration-line-through 
-    decoration-wavy
-    decoration-light-blue-300
-    decoration-2">
+<h1 class="
+    text-decoration 
+    text-decoration-underline 
+    text-decoration-overline 
+    text-decoration-line-through 
+    text-decoration-wavy
+    text-decoration-light-blue-300
+    text-decoration-2">
     Header
 </h1>
 ```
@@ -188,11 +195,11 @@ You can use following [text-decoration-style](https://developer.mozilla.org/en-U
 
 | CSS               | Applied Style           |
 |-------------------|-------------------------|
-| decoration-solid  | text-decoration: solid  |
-| decoration-double | text-decoration: double |
-| decoration-dotted | text-decoration: dotted |
-| decoration-dashed | text-decoration: dashed |
-| decoration-wavy   | text-decoration: wavy   |
+| text-decoration-solid  | text-decoration: solid  |
+| text-decoration-double | text-decoration: double |
+| text-decoration-dotted | text-decoration: dotted |
+| text-decoration-dashed | text-decoration: dashed |
+| text-decoration-wavy   | text-decoration: wavy   |
 
 
 ### text-decoration-thickness
@@ -202,11 +209,14 @@ When you type `decoration-{thickness: number}`, [text-decoration-thickness](http
 As an example, `decoration-2` will apply `2px` thickness
 
 ```html
-<h1 class="text-decoration 
-    decoration-underline decoration-overline decoration-line-through 
-    decoration-wavy
-    decoration-primary
-    decoration-2">
+<h1 class="
+    text-decoration 
+    text-decoration-underline 
+    text-decoration-overline 
+    text-decoration-line-through 
+    text-decoration-wavy
+    text-decoration-primary
+    text-decoration-2">
     Header
 </h1>
 ```
@@ -216,10 +226,10 @@ Available values are,
 
 | CSS          | Applied Style                   |
 |--------------|---------------------------------|
-| decoration-1 | text-decoration-thickness: 1px; |
-| decoration-2 | text-decoration-thickness: 2px; |
-| decoration-4 | text-decoration-thickness: 4px; |
-| decoration-8 | text-decoration-thickness: 8px; |
+| text-decoration-1 | text-decoration-thickness: 1px; |
+| text-decoration-2 | text-decoration-thickness: 2px; |
+| text-decoration-4 | text-decoration-thickness: 4px; |
+| text-decoration-8 | text-decoration-thickness: 8px; |
 
 You can extend the thickness by updating configuration, `textDecorationPlugin.thicknesses` property.
 

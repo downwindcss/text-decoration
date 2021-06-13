@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['10.x', '12.x', '14.x']
+        node: ['14.x', '16.x']
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
@@ -19,14 +19,24 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      # https://pnpm.io/continuous-integration#github-actions
+      - name: Cache .pnpm-store
+        uses: actions/cache@v1
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install pnpm
+        run: curl -f https://get.pnpm.io/v6.7.js | node - add --global pnpm@6
+
+      - name: Install NPM packages
+        run: pnpm install
 
       - name: Lint
-        run: yarn lint
+        run: pnpm run lint
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: pnpm test -- --ci --coverage --maxWorkers=2
 
       - name: Build
-        run: yarn build
+        run: pnpm build

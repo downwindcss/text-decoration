@@ -1,6 +1,6 @@
 {
   "name": "@downwindcss/text-decoration",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "Sung M. Kim",
   "main": "dist/index.js",

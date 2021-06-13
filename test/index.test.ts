@@ -4,7 +4,7 @@ import { TailwindConfig } from 'tailwindcss/tailwind-config';
 import cssMatcher from 'jest-matcher-css';
 
 import textDecorationPlugin from '../src/textDecoration';
-import { internalPrefix } from '../src/constants'
+import { internalPrefix } from '../src/constants';
 
 // https://github.com/innocenzi/tailwindcss-theming/blob/eb802f66f716a3df9f66df4c0b4a428729fd7eef/test/tailwind/themingThemes.test.ts#L13
 expect.extend({ toMatchCss: cssMatcher });

@@ -2636,17 +2636,17 @@ describe('Theme configuration tests', () => {
 describe('Variant configuration test', () => {
   test('textDecorationPlugin variant utilities are generated', async () => {
     const screens = {
-      'sm': '100px',
-      'md': '200px',
-      'lg': '300px',
-      'xl': '400px',
-      '2xl': '500px'
+      sm: '100px',
+      md: '200px',
+      lg: '300px',
+      xl: '400px',
+      '2xl': '500px',
     };
     const utilities = await generateTailwindCss({
       theme: {
         extend: {
-          screens
-        }
+          screens,
+        },
       },
       variants: {
         extend: {
@@ -2658,37 +2658,44 @@ describe('Variant configuration test', () => {
 
     let atRules = utilities.root.nodes
       .filter((node: any) => node.type === 'atrule')
-      .map((node: any) => node.params)
+      .map((node: any) => node.params);
 
-    expect(atRules).toMatchObject(Object.values(screens).map(width => `(min-width: ${width})`))
+    expect(atRules).toMatchObject(
+      Object.values(screens).map(width => `(min-width: ${width})`)
+    );
 
     // console.log({ selectors: utilities.root.nodes
     //   .filter((r: any) => r?.selector?.includes('dark') && r?.selector?.includes('hover'))
     //   .map((r:any) => r)})
 
     const selectors = utilities.root.nodes.map((r: any) => r.selector);
-    expect(selectors).toEqual(expect.arrayContaining([
-      '.hover\\:text-decoration:hover',
-      '.hover\\:text-decoration-underline:hover',
-      '.hover\\:text-decoration-red-300:hover',
-      '.hover\\:text-decoration-8:hover',
-      '.hover\\:text-decoration-wavy:hover',
-    ]))
-    expect(selectors).toEqual(expect.arrayContaining([
-      '.dark .dark\\:text-decoration',
-      '.dark .dark\\:text-decoration-underline',
-      '.dark .dark\\:text-decoration-solid',
-      '.dark .dark\\:text-decoration-black',
-      '.dark .dark\\:text-decoration-yellow-100',
-      '.dark .dark\\:text-decoration-1',
-    ]))
-    expect(selectors).toEqual(expect.arrayContaining([
-      '.dark .dark\\:hover\\:text-decoration:hover',
-      '.dark .dark\\:hover\\:text-decoration-underline:hover',
-      '.dark .dark\\:hover\\:text-decoration-dotted:hover',
-      '.dark .dark\\:hover\\:text-decoration-gray-50:hover',
-      '.dark .dark\\:hover\\:text-decoration-1:hover'
-    ]))
-  }
-  )
+    expect(selectors).toEqual(
+      expect.arrayContaining([
+        '.hover\\:text-decoration:hover',
+        '.hover\\:text-decoration-underline:hover',
+        '.hover\\:text-decoration-red-300:hover',
+        '.hover\\:text-decoration-8:hover',
+        '.hover\\:text-decoration-wavy:hover',
+      ])
+    );
+    expect(selectors).toEqual(
+      expect.arrayContaining([
+        '.dark .dark\\:text-decoration',
+        '.dark .dark\\:text-decoration-underline',
+        '.dark .dark\\:text-decoration-solid',
+        '.dark .dark\\:text-decoration-black',
+        '.dark .dark\\:text-decoration-yellow-100',
+        '.dark .dark\\:text-decoration-1',
+      ])
+    );
+    expect(selectors).toEqual(
+      expect.arrayContaining([
+        '.dark .dark\\:hover\\:text-decoration:hover',
+        '.dark .dark\\:hover\\:text-decoration-underline:hover',
+        '.dark .dark\\:hover\\:text-decoration-dotted:hover',
+        '.dark .dark\\:hover\\:text-decoration-gray-50:hover',
+        '.dark .dark\\:hover\\:text-decoration-1:hover',
+      ])
+    );
+  });
 });

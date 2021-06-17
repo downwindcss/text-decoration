@@ -35,8 +35,8 @@ const defaultTextDecoration = {
     }),
   },
   variants: {
-    textDecorationPlugin: ['responsive']
-  }
+    textDecorationPlugin: ['responsive'],
+  },
 };
 
 export default plugin(textDecoration, defaultTextDecoration);

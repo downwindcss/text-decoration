@@ -2661,7 +2661,7 @@ describe('Variant configuration test', () => {
     // }
 
     // console.log({nodes: utilities.root.nodes.map((r:any) => r.type).filter(onlyUnique)})
-    console.log({nodes: utilities.root.nodes.filter((r:any) => r.type === 'atrule')})
+    // console.log({nodes: utilities.root.nodes.filter((r:any) => r.type === 'atrule')})
 
     let atRules = utilities.root.nodes
       .filter((node:any) => node.type === 'atrule')
@@ -2671,8 +2671,14 @@ describe('Variant configuration test', () => {
 
     // console.log({ selectors: utilities.root.nodes
     //   .filter((r: any) => r?.selector?.includes('hover'))
-    //   .map((r:any) => r.selector)})
+    //   .map((r:any) => r)})
 
-    
+    expect(utilities.root.nodes.map((r: any) => r.selector)).toEqual(expect.arrayContaining([
+      '.hover\\:text-decoration:hover',
+      '.hover\\:text-decoration-underline:hover',
+      '.hover\\:text-decoration-red-300:hover',
+      '.hover\\:text-decoration-8:hover',
+      '.hover\\:text-decoration-wavy:hover',
+    ]))
   }
 )});

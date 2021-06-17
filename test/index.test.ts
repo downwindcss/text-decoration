@@ -31,7 +31,7 @@ function generateTailwindCss(customConfig?: TailwindConfig) {
   });
 }
 
-xdescribe('Happy Path tests', () => {
+describe('Happy Path tests', () => {
   test('all Tailwind CSS colors are used', async () => {
     const utilities = await generateTailwindCss();
 
@@ -2509,7 +2509,7 @@ xdescribe('Happy Path tests', () => {
   });
 });
 
-xdescribe('Theme configuration tests', () => {
+describe('Theme configuration tests', () => {
   test('Custom thicknesses', async () => {
     const utilities = await generateTailwindCss({
       theme: {
@@ -2656,29 +2656,39 @@ describe('Variant configuration test', () => {
       darkMode: 'class',
     } as any);
 
-    // function onlyUnique(value:any, index:any, self:any) {
-    //   return self.indexOf(value) === index;
-    // }
-
-    // console.log({nodes: utilities.root.nodes.map((r:any) => r.type).filter(onlyUnique)})
-    // console.log({nodes: utilities.root.nodes.filter((r:any) => r.type === 'atrule')})
-
     let atRules = utilities.root.nodes
-      .filter((node:any) => node.type === 'atrule')
+      .filter((node: any) => node.type === 'atrule')
       .map((node: any) => node.params)
 
     expect(atRules).toMatchObject(Object.values(screens).map(width => `(min-width: ${width})`))
 
     // console.log({ selectors: utilities.root.nodes
-    //   .filter((r: any) => r?.selector?.includes('hover'))
+    //   .filter((r: any) => r?.selector?.includes('dark') && r?.selector?.includes('hover'))
     //   .map((r:any) => r)})
 
-    expect(utilities.root.nodes.map((r: any) => r.selector)).toEqual(expect.arrayContaining([
+    const selectors = utilities.root.nodes.map((r: any) => r.selector);
+    expect(selectors).toEqual(expect.arrayContaining([
       '.hover\\:text-decoration:hover',
       '.hover\\:text-decoration-underline:hover',
       '.hover\\:text-decoration-red-300:hover',
       '.hover\\:text-decoration-8:hover',
       '.hover\\:text-decoration-wavy:hover',
     ]))
+    expect(selectors).toEqual(expect.arrayContaining([
+      '.dark .dark\\:text-decoration',
+      '.dark .dark\\:text-decoration-underline',
+      '.dark .dark\\:text-decoration-solid',
+      '.dark .dark\\:text-decoration-black',
+      '.dark .dark\\:text-decoration-yellow-100',
+      '.dark .dark\\:text-decoration-1',
+    ]))
+    expect(selectors).toEqual(expect.arrayContaining([
+      '.dark .dark\\:hover\\:text-decoration:hover',
+      '.dark .dark\\:hover\\:text-decoration-underline:hover',
+      '.dark .dark\\:hover\\:text-decoration-dotted:hover',
+      '.dark .dark\\:hover\\:text-decoration-gray-50:hover',
+      '.dark .dark\\:hover\\:text-decoration-1:hover'
+    ]))
   }
-)});
+  )
+});

@@ -11,13 +11,14 @@ const plugin = require('tailwindcss/plugin');
 function textDecoration({ addUtilities, variants, theme, e }: PluginType) {
   const themeColors = theme('textDecorationPlugin.colors');
   const themeThicknesses = theme('textDecorationPlugin.thicknesses');
+  const customVariants = variants('textDecorationPlugin');
 
   const colorRules = buildColorRules(themeColors, e);
   const thicknessRules = buildThicknessRules(themeThicknesses, e);
 
   addUtilities(
     [textDecorationRule, lineRules, styleRules, colorRules, thicknessRules],
-    variants('textDecorationPlugin')
+    { variants: customVariants }
   );
 }
 
@@ -33,6 +34,9 @@ const defaultTextDecoration = {
       },
     }),
   },
+  variants: {
+    textDecorationPlugin: ['responsive']
+  }
 };
 
 export default plugin(textDecoration, defaultTextDecoration);

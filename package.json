@@ -48,11 +48,11 @@
   "size-limit": [
     {
       "path": "dist/text-decoration.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "1 KB"
     },
     {
       "path": "dist/text-decoration.esm.js",
-      "limit": "10 KB"
+      "limit": "1 KB"
     }
   ],
   "devDependencies": {

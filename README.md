@@ -1,5 +1,15 @@
 # @downwindcss/text-decoration
 
+**NOTE**: Deprecated for Tailwind CSS version 3.x.  
+because TW now provides these functionalities out of the box.
+- Text Decoration Color - https://tailwindcss.com/docs/text-decoration-color
+- Text Decoration Style - https://tailwindcss.com/docs/text-decoration-style
+- Text Decoration Thickness - https://tailwindcss.com/docs/text-decoration-thickness
+- Text Underline Offset - https://tailwindcss.com/docs/text-underline-offset
+
+---
+
+
 A [Tailwind CSS](https://tailwindcss.com/) Plugin for [text-decoration](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration) utility.
 
 This plugin is composable ([Composing the Uncompsable with CSS Variables](https://adamwathan.me/composing-the-uncomposable-with-css-variables/)) thus can add multiple [decoration-line](https://developer.mozilla.org/en-US/docs/Web/CSS/decoration-line) utitlies (to add under/overline and line-through together. Refer to the "Usage" sectrion below)
